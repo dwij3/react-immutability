@@ -9,29 +9,29 @@ import { ImageGallery } from '../components/imageGallery';
 import { IMAGES } from '../data';
 
 describe('ImageGallery Component', () => {
-  test('sorts images by click count in descending order when sort button is clicked', async () => {
+  test('test 1', async () => {
     const { getByAltText, getByTestId, rerender } = render(
       <ImageGallery images={IMAGES} />
     );
 
-    await userEvent.click(getByAltText('Tree'));
-    await userEvent.click(getByAltText('Tree'));
+    await userEvent.click(getByAltText('Sea'));
+    await userEvent.click(getByAltText('Sea'));
 
-    await userEvent.click(getByAltText('Frog'));
+    await userEvent.click(getByAltText('Tree'));
 
     await userEvent.click(getByTestId('sort'));
 
     rerender(<ImageGallery images={IMAGES} />);
 
     const images = document.querySelectorAll('img');
-    expect(images[0].alt).toBe('Tree');
-    expect(images[1].alt).toBe('Frog');
+    expect(images[0].alt).toBe('Sea');
+    expect(images[1].alt).toBe('Tree');
     expect(images[2].alt).toBe('Cat');
     expect(images[3].alt).toBe('Bird');
-    expect(images[4].alt).toBe('Sea');
+    expect(images[4].alt).toBe('Frog');
   });
 
-  test('reverse sorting', async () => {
+  test('test 2', async () => {
     const { getByAltText, getByTestId, rerender } = render(
       <ImageGallery images={IMAGES} />
     );
@@ -70,7 +70,7 @@ describe('ImageGallery Component', () => {
     expect(images[4].alt).toBe('Sea');
   });
 
-  test('images key test', async () => {
+  test('test 3', async () => {
     const { getByAltText, rerender } = render(<ImageGallery images={IMAGES} />);
 
     await userEvent.click(getByAltText('Tree'));
