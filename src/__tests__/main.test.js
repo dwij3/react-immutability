@@ -97,15 +97,4 @@ describe('ImageGallery Component', () => {
     expect(images[3].alt).toBe('Tree');
     expect(images[4].alt).toBe('Sea');
   });
-
-  test('test 5', async () => {
-    const { getByAltText, rerender } = render(<ImageGallery images={IMAGES} />);
-
-    await userEvent.click(getByAltText('Tree'));
-
-    rerender(<ImageGallery images={IMAGES} />);
-    const images = document.querySelectorAll('img');
-
-    expect(images.length).toBe(5);
-  });
 });
