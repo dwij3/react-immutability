@@ -32,7 +32,14 @@ export const Image = ({ image, onImageClick }) => {
         height={SIZE}
         width={SIZE}
       />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' , padding: '0 8px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+          padding: '0 8px',
+        }}
+      >
         <span>
           <b>Name:</b> {name}
         </span>

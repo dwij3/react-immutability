@@ -5,8 +5,8 @@ import { useState, useCallback } from 'react';
 import { Header } from './components/header';
 import { Image } from './components/image';
 
-export const ImageGallery = ({ initialImages }) => {
-  const [images, setImages] = useState(initialImages);
+export const ImageGallery = ({ images: baseImages }) => {
+  const [images, setImages] = useState(baseImages);
 
   const handleImageClick = useCallback(
     (id) => {

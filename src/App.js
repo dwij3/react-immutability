@@ -13,7 +13,7 @@ import { IMAGES } from './data';
 export default function App() {
   return (
     <div className="App">
-      <ImageGallery initialImages={IMAGES} />
+      <ImageGallery images={IMAGES} />
     </div>
   );
 }

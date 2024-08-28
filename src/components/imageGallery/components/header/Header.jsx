@@ -9,21 +9,19 @@ export const Header = ({ title, onReverse, onSort }) => {
         borderBottom: '1px solid #ccc',
         zIndex: '1000',
         backgroundColor: '#fdfaf6',
-        padding: '0 16px'
+        padding: '0 16px',
       }}
     >
-      <h1 style={{ flex: 1 }}>
-        {title}
-      </h1>
+      <h1 style={{ flex: 1 }}>{title}</h1>
       <div
         style={{
           display: 'flex',
           gap: '8px',
-          flex: 'none'
+          flex: 'none',
         }}
       >
         <button
-          data-testid='reverse'
+          data-testid="reverse"
           onClick={onReverse}
           style={{
             border: '1px solid transparent',
@@ -39,7 +37,7 @@ export const Header = ({ title, onReverse, onSort }) => {
           Reverse
         </button>
         <button
-          data-testid='sort'
+          data-testid="sort"
           onClick={onSort}
           style={{
             border: '1px solid transparent',
