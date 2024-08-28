@@ -76,6 +76,34 @@ describe('ImageGallery Component', () => {
     await userEvent.click(getByAltText('Tree'));
 
     rerender(<ImageGallery images={IMAGES} />);
+
+    expect(getByAltText('Tree').closest('div')).toHaveTextContent('1');
+    expect(getByAltText('Sea').closest('div')).toHaveTextContent('0');
+  });
+
+  test('test 4', async () => {
+    const { getByTestId, rerender } = render(
+      <ImageGallery images={IMAGES.reverse()} />
+    );
+
+    await userEvent.click(getByTestId('reverse'));
+
+    rerender(<ImageGallery images={IMAGES} />);
+
+    const images = document.querySelectorAll('img');
+    expect(images[0].alt).toBe('Cat');
+    expect(images[1].alt).toBe('Bird');
+    expect(images[2].alt).toBe('Frog');
+    expect(images[3].alt).toBe('Tree');
+    expect(images[4].alt).toBe('Sea');
+  });
+
+  test('test 5', async () => {
+    const { getByAltText, rerender } = render(<ImageGallery images={IMAGES} />);
+
+    await userEvent.click(getByAltText('Tree'));
+
+    rerender(<ImageGallery images={IMAGES} />);
     const images = document.querySelectorAll('img');
 
     expect(images.length).toBe(5);
