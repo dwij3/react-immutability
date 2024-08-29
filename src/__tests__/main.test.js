@@ -10,7 +10,7 @@ import { IMAGES } from '../data';
 
 describe('ImageGallery Component', () => {
   test('test 1', async () => {
-    const { getByAltText, getByTestId, rerender } = render(
+    const { getByAltText, getByTestId } = render(
       <ImageGallery images={IMAGES} />
     );
 
@@ -21,8 +21,6 @@ describe('ImageGallery Component', () => {
 
     await userEvent.click(getByTestId('sort'));
 
-    rerender(<ImageGallery images={IMAGES} />);
-
     const images = document.querySelectorAll('img');
     expect(images[0].alt).toBe('Sea');
     expect(images[1].alt).toBe('Tree');
@@ -32,7 +30,7 @@ describe('ImageGallery Component', () => {
   });
 
   test('test 2', async () => {
-    const { getByAltText, getByTestId, rerender } = render(
+    const { getByAltText, getByTestId } = render(
       <ImageGallery images={IMAGES} />
     );
 
@@ -60,8 +58,6 @@ describe('ImageGallery Component', () => {
 
     await userEvent.click(getByTestId('reverse'));
 
-    rerender(<ImageGallery images={IMAGES} />);
-
     const images = document.querySelectorAll('img');
     expect(images[0].alt).toBe('Frog');
     expect(images[1].alt).toBe('Cat');
@@ -71,24 +67,18 @@ describe('ImageGallery Component', () => {
   });
 
   test('test 3', async () => {
-    const { getByAltText, rerender } = render(<ImageGallery images={IMAGES} />);
+    const { getByAltText } = render(<ImageGallery images={IMAGES} />);
 
     await userEvent.click(getByAltText('Tree'));
-
-    rerender(<ImageGallery images={IMAGES} />);
 
     expect(getByAltText('Tree').closest('div')).toHaveTextContent('1');
     expect(getByAltText('Sea').closest('div')).toHaveTextContent('0');
   });
 
   test('test 4', async () => {
-    const { getByTestId, rerender } = render(
-      <ImageGallery images={IMAGES.reverse()} />
-    );
+    const { getByTestId } = render(<ImageGallery images={IMAGES.reverse()} />);
 
     await userEvent.click(getByTestId('reverse'));
-
-    rerender(<ImageGallery images={IMAGES} />);
 
     const images = document.querySelectorAll('img');
     expect(images[0].alt).toBe('Cat');

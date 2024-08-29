@@ -11,22 +11,18 @@ import { IMAGES } from '../data';
 
 describe('ImageGallery Component', () => {
   test('increments click count when an image is clicked', async () => {
-    const { getByAltText, rerender } = render(<ImageGallery images={IMAGES} />);
+    const { getByAltText } = render(<ImageGallery images={IMAGES} />);
 
     await userEvent.click(getByAltText('Cat'));
-
-    rerender(<ImageGallery images={IMAGES} />);
 
     expect(getByAltText('Cat').closest('div')).toHaveTextContent('1');
     expect(getByAltText('Bird').closest('div')).toHaveTextContent('0');
   });
 
   test('reverses the order of images when reverse button is clicked', async () => {
-    const { getByTestId, rerender } = render(<ImageGallery images={IMAGES} />);
+    const { getByTestId } = render(<ImageGallery images={IMAGES} />);
 
     await userEvent.click(getByTestId('reverse'));
-
-    rerender(<ImageGallery images={IMAGES} />);
 
     const images = document.querySelectorAll('img');
     expect(images[0].alt).toBe('Sea');
@@ -37,7 +33,7 @@ describe('ImageGallery Component', () => {
   });
 
   test('sorts images by click count in descending order when sort button is clicked', async () => {
-    const { getByAltText, getByTestId, rerender } = render(
+    const { getByAltText, getByTestId } = render(
       <ImageGallery images={IMAGES} />
     );
 
@@ -47,8 +43,6 @@ describe('ImageGallery Component', () => {
     await userEvent.click(getByAltText('Frog'));
 
     await userEvent.click(getByTestId('sort'));
-
-    rerender(<ImageGallery images={IMAGES} />);
 
     const images = document.querySelectorAll('img');
     expect(images[0].alt).toBe('Tree');
